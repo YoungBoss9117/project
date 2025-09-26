@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Oriflame_YoungBoss Store — Featured Products</title>
+  <meta name="description" content="Oriflame_YoungBoss Store — genuine Oriflame products with images & prices" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<script>
+  const searchInput = document.getElementById("q");
+  const searchBtn = document.getElementById("searchBtn");
+  const productCards = document.querySelectorAll(".card");
+
+  // Live filtering as user types
+  searchInput.addEventListener("input", function() {
+    let query = searchInput.value.toLowerCase();
+    let visibleCount = 0;
+
+    productCards.forEach(card => {
+      let title = card.querySelector("h3").innerText.toLowerCase();
+      if (title.includes(query)) {
+        card.style.display = "block";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    if (query === "") {
+      productCards.forEach(card => card.style.display = "block");
+    }
+  });
+
+  // Button click search with highlight + Oriflame redirect
+  searchBtn.addEventListener("click", function() {
+    let query = searchInput.value.trim().toLowerCase();
+    if (query.length > 0) {
+      let found = false;
+
+      productCards.forEach(card => {
+        let title = card.querySelector("h3").innerText.toLowerCase();
+        if (title.includes(query)) {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.add("highlight");
+          setTimeout(() => card.classList.remove("highlight"), 1500);
+          found = true;
+        }
+      });
+
+      if (!found) {
+        let catalogURL = "https://ng.oriflame.com/products/digital-catalogue-current?p=2022002&query=" + encodeURIComponent(query);
+        window.open(catalogURL, "_blank");
+      }
+    }
+  });
+</script>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <img src="https://www.zilliondesigns.com/blog/wp-content/uploads/Beauty-Brand-Logo-Design.png" alt="Oriflame YoungBoss Logo" />
+        </div>
+        <div>
+          <h1>Oriflame_YoungBoss Store</h1>
+          <p>One Of The Best Store For Oriflame Products In Nigeria</p>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="https://www.instagram.com/oriflame_youngboss?igsh=MXRlaDVjNDRob2c5Yg==" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Discover perfumes, skincare, haircare & more</h2>
+        <p>Shop genuine Oriflame products with transparent pricing and quick contact. Images and prices are linked to the official Oriflame product pages.</p>
+
+        <div class="search" role="search"> 
+  <input id="q" placeholder="Search products, e.g. 'Perfume'" aria-label="Search products" />
+  <button id="searchBtn">Search</button>
+</div>
+
+        <div class="cats" aria-hidden="true">
+          <span class="chip" data-term="fragrance">Fragrance</span>
+          <span class="chip" data-term="skincare">Skincare</span>
+          <span class="chip" data-term="hair-care">Hair Care</span>
+          <span class="chip" data-term="wellness">Wellness</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3 style="margin-top:0">Contact & Quick Links</h3>
+        <p class="meta">Phone: +2348162597527<br/>Email: omoniyioluwatobi35@gmail.com</p>
+        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(255,255,255,0.04)" />
+        <p class="meta">Popular categories</p>
+        <ul class="meta" style="padding-left:18px">
+          <li>Perfume for Men &  Women</li>
+          <li>Hair Care</li>
+          <li>Skin Care</li>
+          <li>Wellness</li>
+          <li>Makeup</li>
+          <li>lots more</li>
+        </ul>
+      </aside>
+    </section>
+
+    <main id="shop">
+      <h2 style="margin-top:26px">Featured Products</h2>
+      <div id="products"></div>
+
+      <div class="catalog-btn">
+        <a href="https://ng.oriflame.com/products/digital-catalogue-current?p=2022002&" target="_blank" rel="noopener noreferrer">✨ View Our Product Catalog</a>
+      </div>
+    </main>
+
+    <!-- Reviews Carousel (global) -->
+    <section class="reviews-global">
+      <h2>What Our Customers Say</h2>
+      <div class="review-slider">
+        <div class="review">⭐⭐⭐⭐⭐ “Amazing product quality and fast delivery!” – Aisha</div>
+        <div class="review">⭐⭐⭐⭐⭐ “Beautiful scents, great packaging.” – Sade</div>
+        <div class="review">⭐⭐⭐⭐ “Great value but delivery could improve.” – Peter</div>
+        <div class="review">⭐⭐⭐⭐⭐ “I always come back to Oriflame_YoungBoss.” – Funke</div>
+        <div class="review">⭐⭐⭐⭐⭐ “Top-notch customer service.” – Daniel</div>
+      </div>
+    </section>
+
+    <!-- Contact / Request Form -->
+    <section class="contact-form">
+      <h2>Send Us a Request</h2>
+      <form action="https://formspree.io/f/xovkvgek" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="message">Your Request</label>
+        <textarea id="message" name="message" placeholder="Type your request..." required></textarea>
+
+        <button type="submit">Send Request</button>
+      </form>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Oriflame_YoungBoss Store</strong>
+        <div class="meta">© Oriflame_YoungBoss Store</div>
+      </div>
+      <div class="meta"> Official website for Oriflame_YoungBoss Store</div>
+    </footer>
+  </div>
+
+  <script>
+    const productsData = [
+      // --- Fragrance (10) ---
+      {
+        id:44315, title:"My Sunshine Eau de Parfum", price:"₦49,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f44315%2f44315_1.png",
+        link:"https://ng.oriflame.com/products/product?code=44315",
+        reviews:[
+          "Smells amazing, lasts all day!",
+          "Perfect for evening outings.",
+          "Very classy fragrance, not too strong.",
+          "I always get compliments when I wear this.",
+          "Worth the price — highly recommended!"
+        ]
+      },
+      {
+        id:47511, title:"Giordani Gold Essenza Parfum", price:"₦71,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f47511%2f47511_1.png",
+        link:"https://ng.oriflame.com/products/product?code=47511",
+        reviews:[
+          "Luxurious scent and long lasting.",
+          "Elegant packaging, great gift.",
+          "High price but good value.",
+          "Very rich and bold aroma.",
+          "One of my favorite perfumes now."
+        ]
+      },
+      {
+        id:40683, title:"Giordani Gold Essenza Supreme Parfum", price:"₦71,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f40683%2f40683_1.png",
+        link:"https://ng.oriflame.com/products/product?code=40683",
+        reviews:[
+          "Deep scent, lasts very long.",
+          "Beautiful and elegant aroma.",
+          "Expensive but worth it.",
+          "People keep asking what perfume it is.",
+          "I’d buy this again."
+        ]
+      },
+      {
+        id:42751, title:"Eau de Parfum (Ambery)", price:"₦39,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f42751%2f42751_1.png",
+        link:"https://ng.oriflame.com/products/product?code=42751",
+        reviews:[
+          "Warm amber smell — perfect for evening wear.",
+          "Gentle but noticeable.",
+          "Good price for the quality.",
+          "Doesn’t irritate sensitive skin.",
+          "I keep repurchasing this one."
+        ]
+      },
+      {
+        id:38497, title:"Eau de Parfum (Floral)", price:"₦29,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38497%2f38497_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38497",
+        reviews:[
+          "Soft floral scent, not overpowering.",
+          "Exactly what I look for in perfumes.",
+          "Light, perfect for daytime.",
+          "Many people asked me what I'm wearing.",
+          "Lovely, will buy again."
+        ]
+      },
+      {
+        id:35649, title:"Amour Eau de Toilette", price:"₦27,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f35649%2f35649_1.png",
+        link:"https://ng.oriflame.com/products/product?code=35649",
+        reviews:[
+          "Romantic scent, simply lovely.",
+          "Pleasant throughout the day.",
+          "Subtle but attractive aroma.",
+          "Many compliments received.",
+          "My go-to for special nights."
+        ]
+      },
+      {
+        id:38540, title:"For Her Parfum", price:"₦34,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38540%2f38540_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38540",
+        reviews:[
+          "Soft and feminine scent.",
+          "Not too heavy but lasts well.",
+          "Beautiful bottle design too.",
+          "Very happy with this purchase.",
+          "I would recommend to friends."
+        ]
+      },
+      {
+        id:43118, title:"Eau de Toilette for Her", price:"₦25,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f43118%2f43118_1.png",
+        link:"https://ng.oriflame.com/products/product?code=43118",
+        reviews:[
+          "Light, breezy fragrance.",
+          "Good choice for summer days.",
+          "Not too overpowering.",
+          "Fresh and lovely.",
+          "Nice for casual wear."
+        ]
+      },
+      {
+        id:45967, title:"Essenza Man Elixir Parfum", price:"₦71,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f45967%2f45967_1.png",
+        link:"https://ng.oriflame.com/products/product?code=45967",
+        reviews:[
+          "Strong masculine scent.",
+          "Lasts hours even in heat.",
+          "Much better than many colognes.",
+          "High end smell.",
+          "I feel confident wearing this."
+        ]
+      },
+      {
+        id:38531, title:"Woman Eau de Parfum", price:"₦29,990", category:"fragrance",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38531%2f38531_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38531",
+        reviews:[
+          "Elegant and soft floral notes.",
+          "I wear this daily.",
+          "Not too strong, just right.",
+          "Friends compliment often.",
+          "One of my favorites."
+        ]
+      },
+
+      // --- Skincare (10) ---
+      {
+        id:31602, title:"Milk & Honey Gold Nourishing Hand & Body Cream", price:"₦19,490", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f31602%2f31602_1.png",
+        link:"https://ng.oriflame.com/products/product?code=31602",
+        reviews:[
+          "Extremely moisturizing & rich.",
+          "Leaves skin silky smooth.",
+          "Nice fragrance too.",
+          "I use it daily at night.",
+          "Great for dry seasons."
+        ]
+      },
+      {
+        id:31601, title:"Milk & Honey Gold Smoothing Sugar Scrub", price:"₦19,990", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f31601%2f31601_1.png",
+        link:"https://ng.oriflame.com/products/product?code=31601",
+        reviews:[
+          "Gentle exfoliation, not harsh.",
+          "Skin feels clean & smooth afterward.",
+          "Good value for price.",
+          "I use twice weekly.",
+          "Lovely texture and scent."
+        ]
+      },
+      {
+        id:43906, title:"Glow Essentials Face Cream SPF10", price:"₦9,790", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f43906%2f43906_1.png",
+        link:"https://ng.oriflame.com/products/product?code=43906",
+        reviews:[
+          "Nice glow, lightweight formula.",
+          "Doesn’t feel greasy.",
+          "Good basic day cream.",
+          "Affordable and effective.",
+          "I see improvement already."
+        ]
+      },
+      {
+        id:41035, title:"Wrinkle Smooth Serum", price:"₦48,190", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41035%2f41035_1.png",
+        link:"https://ng.oriflame.com/products/product?code=41035",
+        reviews:[
+          "Reduced fine lines after weeks.",
+          "Nice texture & absorption.",
+          "Hits the price bracket.",
+          "Skin feels firmer.",
+          "I’d repurchase this."
+        ]
+      },
+      {
+        id:12760, title:"Natural Multi-purpose Balm (Tender Care)", price:"₦7,990", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f12760%2f12760_3.png",
+        link:"https://ng.oriflame.com/products/product?code=12760",
+        reviews:[
+          "Magic balm, use everywhere.",
+          "My cuticles love it.",
+          "Affordable and effective.",
+          "Transportable, good for travel.",
+          "Would gift this."
+        ]
+      },
+      {
+        id:35760, title:"Cream Sensitive Body + Face SPF 50+", price:"₦34,990", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f35760%2f35760_1.png",
+        link:"https://ng.oriflame.com/products/product?code=35760",
+        reviews:[
+          "High SPF helps my skin.",
+          "Gentle formula for sensitive skin.",
+          "Good product, no breakouts.",
+          "I use it daily.",
+          "Value for money."
+        ]
+      },
+      {
+        id:42881, title:"Pore Clearing Peel-off Mask", price:"₦12,590", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f42881%2f42881_1.png",
+        link:"https://ng.oriflame.com/products/product?code=42881",
+        reviews:[
+          "Good for removing blackheads.",
+          "Works moderately well.",
+          "I saw results after one use.",
+          "Pleasant feel.",
+          "Will buy again."
+        ]
+      },
+      {
+        id:41039, title:"Blemish + Age Defy Serum", price:"₦42,690", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41039%2f41039_1.png",
+        link:"https://ng.oriflame.com/products/product?code=41039",
+        reviews:[
+          "Helped with my blemish spots.",
+          "Nice consistency.",
+          "Expensive but worth it.",
+          "Results after 2 weeks.",
+          "Would recommend."
+        ]
+      },
+      {
+        id:45590, title:"Wrinkle Smooth Routine Mixed", price:"₦192,890", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f45590%2f45590_1.png",
+        link:"https://ng.oriflame.com/products/product?code=45590",
+        reviews:[
+          "Premium set, works well.",
+          "But quite pricey.",
+          "Nice smells too.",
+          "Skin improved gradually.",
+          "I’m satisfied."
+        ]
+      },
+      {
+        id:42991, title:"Nourishing Body Cream with Organic Cacao Butter & Coconut Oil", price:"₦17,290", category:"skincare",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f42991%2f42991_5.png",
+        link:"https://ng.oriflame.com/products/product?code=42991",
+        reviews:[
+          "Leaves skin soft and smooth.",
+          "Good hydrating cream.",
+          "Lovely scent.",
+          "Nice texture, not greasy.",
+          "Daily use recommendation."
+        ]
+      },
+
+      // --- Hair Care (10) ---
+      {
+        id:41295, title:"Conditioner For Dry Hair (Love Nature)", price:"₦13,790", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41295%2f41295_1.png",
+        link:"https://ng.oriflame.com/products/product?code=41295",
+        reviews:[
+          "Made my hair smoother.",
+          "Great after shampoo use.",
+          "Smells great.",
+          "Softens dryness.",
+          "I’d buy again."
+        ]
+      },
+      {
+        id:46371, title:"Up-Loved Nourishing Leave-in Conditioner", price:"₦13,790", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f46371%2f46371_1.png",
+        link:"https://ng.oriflame.com/products/product?code=46371",
+        reviews:[
+          "Very lightweight leave-in.",
+          "Helps with frizz.",
+          "Good for daily use.",
+          "Not sticky.",
+          "Would recommend."
+        ]
+      },
+      {
+        id:41292, title:"Shampoo For Dry Hair (Love Nature)", price:"₦11,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41292%2f41292_3.png",
+        link:"https://ng.oriflame.com/products/product?code=41292",
+        reviews:[
+          "Cleans well without drying out.",
+          "Good lather.",
+          "Smells nice.",
+          "My hair feels healthier.",
+          "Decent price."
+        ]
+      },
+      {
+        id:41308, title:"Hot Oil For Dry Hair", price:"₦4,590", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41308%2f41308_1.png&MediaId=15877189&Version=3",
+        link:"https://ng.oriflame.com/products/product?code=41308",
+        reviews:[
+          "Warms nicely and nourishes.",
+          "Great for scalp care.",
+          "Affordable oil.",
+          "Hair feels soft afterward.",
+          "I use weekly."
+        ]
+      },
+      {
+        id:41568, title:"Nourishing Hair Oil Coconut Oil", price:"₦14,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41568%2f41568_2.png",
+        link:"https://ng.oriflame.com/products/product?code=41568",
+        reviews:[
+          "Smells tropical, love it.",
+          "Leaves hair shiny.",
+          "Great nourishment.",
+          "Less breakage now.",
+          "I’ll reorder this."
+        ]
+      },
+      {
+        id:41362, title:"2-in-1 Shampoo (Avocado & Chamomile)", price:"₦25,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41362%2f41362_2.png",
+        link:"https://ng.oriflame.com/products/product?code=41362",
+        reviews:[
+          "Convenient 2-in-1 formula.",
+          "Cleans & conditions.",
+          "Good for short trips.",
+          "Smells mild and nice.",
+          "Enjoy using this."
+        ]
+      },
+      {
+        id:46383, title:"Up-Loved Purifying Shampoo", price:"₦11,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f46383%2f46383_5.png",
+        link:"https://ng.oriflame.com/products/product?code=46383",
+        reviews:[
+          "Good for oily hair.",
+          "Cleans scalp well.",
+          "Non harsh formula.",
+          "Feels fresh after wash.",
+          "I’ll use again."
+        ]
+      },
+      {
+        id:44963, title:"Intense Repair Hair Mask", price:"₦19,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f44963%2f44963_1.png",
+        link:"https://ng.oriflame.com/products/product?code=44963",
+        reviews:[
+          "Deep conditioning effect.",
+          "Hair feels stronger.",
+          "Good value mask.",
+          "Softens damaged hair.",
+          "I apply weekly."
+        ]
+      },
+      {
+        id:41298, title:"Shampoo For Dry Hair (500 ml)", price:"₦25,990", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f41298%2f41298_2.png",
+        link:"https://ng.oriflame.com/products/product?code=41298",
+        reviews:[
+          "Gentle cleansing for dry hair.",
+          "Large bottle, lasts long.",
+          "Pleasant scent.",
+          "Hair looks healthier.",
+          "I’d recommend this."
+        ]
+      },
+      {
+        id:44951, title:"Anti-Flake Purifying Shampoo", price:"₦?, contact for price", category:"hair-care",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f44951%2f44951_1.png",
+        link:"https://ng.oriflame.com/products/product?code=44951",
+        reviews:[
+          "Helps reduce flakes.",
+          "Gentle formula.",
+          "Scalp feels clean.",
+          "Better than previous ones.",
+          "Would try full size."
+        ]
+      },
+
+      // --- Wellness (10) ---
+      {
+        id:38838, title:"Wellness Pack Woman", price:"₦79,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38838%2f38838_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38838",
+        reviews:[
+          "Good value pack.",
+          "Health benefits evident.",
+          "Well balanced nutrients.",
+          "I feel more energetic.",
+          "I recommend to women."
+        ]
+      },
+      {
+        id:38836, title:"Wellness Pack Man", price:"₦79,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38836%2f38836_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38836",
+        reviews:[
+          "Perfect for men’s health.",
+          "Noticeable muscle gains.",
+          "Good supplement mix.",
+          "I use daily.",
+          "Satisfied with this pack."
+        ]
+      },
+      {
+        id:149114, title:"Wellosophy Wellness Set 1", price:"₦239,970", category:"wellness",
+        image:"https://media-cdn.oriflame.com/contentImage?externalMediaId=46d1991e-4ab9-4c40-b58e-28fdf7dd7455&name=0_Top_Wellosophy_BrandPage_280x2560_X2&inputFormat=jpg",
+        link:"https://ng.oriflame.com/products/product?code=149114",
+        reviews:[
+          "Comprehensive wellness set.",
+          "Good variety of supplements.",
+          "Expensive but worth it.",
+          "I see health improvements.",
+          "I’ll invest again."
+        ]
+      },
+      {
+        id:149116, title:"Wellosophy Wellness Set 3", price:"₦239,970", category:"wellness",
+        image:"https://media-cdn.oriflame.com/contentImage?externalMediaId=46d1991e-4ab9-4c40-b58e-28fdf7dd7455&name=0_Top_Wellosophy_BrandPage_280x2560_X2&inputFormat=jpg",
+        link:"https://ng.oriflame.com/products/product?code=149116",
+        reviews:[
+          "Great set for routine.",
+          "High quality ingredients.",
+          "Expensive but justified.",
+          "My health improved.",
+          "I’ll continue usage."
+        ]
+      },
+      {
+        id:149117, title:"Wellosophy Wellness Set 4", price:"₦239,970", category:"wellness",
+        image:"https://media-cdn.oriflame.com/contentImage?externalMediaId=46d1991e-4ab9-4c40-b58e-28fdf7dd7455&name=0_Top_Wellosophy_BrandPage_280x2560_X2&inputFormat=jpg",
+        link:"https://ng.oriflame.com/products/product?code=149117",
+        reviews:[
+          "Excellent wellness combination.",
+          "Strong health support.",
+          "Worth the price.",
+          "I pronounce better sleep.",
+          "I’ll recommend to friends."
+        ]
+      },
+      {
+        id:45306, title:"Meal Replacement (Vanilla)", price:"₦137,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f45306%2f45306_1.png",
+        link:"https://ng.oriflame.com/products/product?code=45306",
+        reviews:[
+          "Tastes good and filling.",
+          "Good nutrition.",
+          "Convenient meal substitute.",
+          "Helps weight control.",
+          "I buy regularly."
+        ]
+      },
+      {
+        id:45307, title:"Meal Replacement (Chocolate)", price:"₦137,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f45307%2f45307_1.png",
+        link:"https://ng.oriflame.com/products/product?code=45307",
+        reviews:[
+          "Chocolate flavor is rich.",
+          "Fills me up well.",
+          "Good for busy days.",
+          "Balanced nutrition.",
+          "I’d try other flavors too."
+        ]
+      },
+      {
+        id:38556, title:"Omega 3", price:"₦39,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38556%2f38556_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38556",
+        reviews:[
+          "Good for heart health.",
+          "I feel more energetic.",
+          "No fishy aftertaste.",
+          "High quality supplement.",
+          "I’ll reorder."
+        ]
+      },
+      {
+        id:38558, title:"Multivitamin & Mineral Man", price:"₦50,990", category:"wellness",
+        image:"https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2fProducts%2f38558%2f38558_1.png",
+        link:"https://ng.oriflame.com/products/product?code=38558",
+        reviews:[
+          "Boosted my energy levels.",
+          "Good nutrient blend.",
+          "I feel healthier.",
+          "Nice daily vitamin.",
+          "Would recommend."
+        ]
+      },
+      {
+        id:150607, title:"Wellosophy Set of 10", price:"₦(contact for price)", category:"wellness",
+        image:"https://media-cdn.oriflame.com/contentImage?externalMediaId=46d1991e-4ab9-4c40-b58e-28fdf7dd7455&name=0_Top_Wellosophy_BrandPage_280x2560_X2&inputFormat=jpg",
+        link:"https://ng.oriflame.com/products/product?code=150607",
+        reviews:[
+          "Ultimate wellness pack.",
+          "Expensive but inclusive set.",
+          "Quality ingredients.",
+          "Noticeable improvements.",
+          "Would buy again."
+        ]
+      }
+    ];
+
+    const productsContainer = document.getElementById("products");
+
+    function escapeHtml(s) {
+      return (s || "").toString()
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function createProductCard(p) {
+      return `
+        <article class="card" data-cat="${p.category}">
+          <div class="img-wrap">
+            <a href="${p.link}" target="_blank" rel="noopener noreferrer">
+              <img src="${p.image}" alt="${escapeHtml(p.title)}"
+                onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 400 400%27%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27%23eceff6%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%230b1220%27 font-size=%2716%27%3EImage%20Unavailable%3C/text%3E%3C/svg%3E';" />
+            </a>
+          </div>
+          <div class="info">
+            <h3 class="product-title">${escapeHtml(p.title)}</h3>
+            <div class="price">${escapeHtml(p.price)}</div>
+            <div class="meta">Category: ${escapeHtml(p.category)}</div>
+            <div class="card-footer">
+              <a class="buy" href="${p.link}" target="_blank" rel="noopener noreferrer">View</a>
+            </div>
+            <div class="reviews">
+              <div class="stars">★★★★★</div>
+              <ul>
+                ${ (p.reviews || []).map(r => `<li>${escapeHtml(r)}</li>`).join("") }
+              </ul>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderByCategory(term = "") {
+      const categories = ["fragrance","skincare","hair-care","wellness"];
+      let html = "";
+      categories.forEach(cat => {
+        const items = productsData.filter(p => {
+          if (!term) return p.category === cat;
+          const t = term.toLowerCase();
+          return (p.title && p.title.toLowerCase().includes(t))
+              || (p.category && p.category.toLowerCase().includes(t))
+              || (p.price && p.price.toLowerCase().includes(t));
+        }).filter(p => p.category === cat || term);
+        if (items.length) {
+          html += `
+            <section class="category-block" id="${cat}-section">
+              <h3 class="category-title">${cat}</h3>
+              <div class="grid">
+                ${ items.map(createProductCard).join("") }
+              </div>
+            </section>
+          `;
+        }
+      });
+      productsContainer.innerHTML = html || '<div class="meta">No products found.CLICK ON THE CATALOG TO VIEW MORE PRODUCT</div>';
+    }
+
+    // initial render
+    renderByCategory();
+
+    // search
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const q = document.getElementById("q").value.trim();
+      renderByCategory(q ? q.toLowerCase() : "");
+    });
+    document.getElementById("q").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const q = document.getElementById("q").value.trim();
+        renderByCategory(q ? q.toLowerCase() : "");
+      }
+    });
+
+    // category chip click
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        renderByCategory("");
+        const el = document.getElementById(chip.dataset.term + "-section");
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
